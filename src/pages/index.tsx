@@ -141,10 +141,7 @@ export default function Home() {
     <>
       <Head>
         <title>Twitmoji</title>
-        <meta
-          name="description"
-          content="Like twitter, but you can only use emojies!"
-        />
+        <meta name="description" content="💭" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen justify-center">

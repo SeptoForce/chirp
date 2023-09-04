@@ -1,5 +1,4 @@
 import { clerkClient } from "@clerk/nextjs";
-import type { User } from "@clerk/nextjs/dist/types/server";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
@@ -11,10 +10,7 @@ import {
   privateProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
-
-const GetUserFromClient = (user: User) => {
-  return { id: user.id, username: user.username, imageUrl: user.imageUrl };
-};
+import filterUserForClient from "~/server/helpers/filterUserForClient";
 
 // Create a new ratelimiter, that allows 3 requests per 1 minute
 const ratelimit = new Ratelimit({
@@ -37,7 +33,7 @@ export const postsRouter = createTRPCRouter({
         userId: posts.map((post) => post.authorId),
         limit: 100,
       })
-    ).map(GetUserFromClient);
+    ).map(filterUserForClient);
 
     return posts.map((post) => {
       const author = users.find((user) => user.id === post.authorId);
@@ -54,6 +50,7 @@ export const postsRouter = createTRPCRouter({
         author: {
           ...author,
           username: author.username,
+          imageUrl: author.imageUrl,
         },
       };
     });
