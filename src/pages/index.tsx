@@ -1,4 +1,4 @@
-import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import Head from "next/head";
 
 import { type RouterOutputs, api } from "~/utils/api";
@@ -6,7 +6,7 @@ import { type RouterOutputs, api } from "~/utils/api";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
-import { LoadingPage, LoadingSpinner } from "~/components/loading";
+import { LoadingPage } from "~/components/loading";
 import React from "react";
 
 dayjs.extend(relativeTime);
@@ -39,7 +39,7 @@ const CreatePostWizard = () => {
         height={56}
       />
       <input
-        placeholder="Express yourself..."
+        placeholder="Express yourself with emoji..."
         className="h-10 w-full rounded-lg border border-white border-opacity-20 bg-transparent pl-2 text-white placeholder-white placeholder-opacity-20"
         type="text"
         value={input}
