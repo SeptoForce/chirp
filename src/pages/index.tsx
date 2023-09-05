@@ -1,5 +1,4 @@
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-import Head from "next/head";
 
 import { type RouterOutputs, api } from "~/utils/api";
 
@@ -10,6 +9,8 @@ import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import React from "react";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
+import { PageHeader, PageLayout } from "~/components/layout";
+import { PostView } from "~/components/postview";
 
 dayjs.extend(relativeTime);
 
@@ -82,38 +83,6 @@ const CreatePostWizard = () => {
   );
 };
 
-type PostWithUser = RouterOutputs["posts"]["getAll"][number];
-const PostView = (props: PostWithUser) => {
-  const { post, author } = props;
-
-  return (
-    <div key={post.id} className="border-b border-zinc-500 p-4">
-      <div className="flex h-full items-center gap-2">
-        <Image
-          src={author.imageUrl}
-          alt="Profile image"
-          className="m-2 flex aspect-square w-12 rounded-lg"
-          width={48}
-          height={48}
-        />
-        <div className="gap-2">
-          <div className="flex flex-col gap-1 font-bold text-white sm:flex-row">
-            <Link href={`/@${author.username}`}>
-              <span>@{author.username}</span>
-            </Link>
-            <Link href={`/post/${post.id}`}>
-              <div className="font-normal opacity-50">
-                • {dayjs(post.createdAt).fromNow()}
-              </div>
-            </Link>
-          </div>
-          <div className="text-3xl">{post.content}</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Feed = () => {
   const { data, isLoading: postLoading } = api.posts.getAll.useQuery();
 
@@ -139,31 +108,24 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Twitmoji</title>
-        <meta name="description" content="💭" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="flex h-screen justify-center">
-        <div className="h-full w-full border-x border-zinc-500 md:max-w-2xl">
-          <div className="flex border-b border-zinc-500 bg-zinc-950 px-4 py-2">
-            {!isSignedIn && (
-              <div className="flex justify-center">
-                <SignInButton />
+      <PageLayout>
+        <PageHeader>
+          {!isSignedIn && (
+            <div className="flex w-full justify-center">
+              <SignInButton />
+            </div>
+          )}
+          {isSignedIn && (
+            <div className="flex h-full w-full items-center justify-between gap-4 ">
+              <CreatePostWizard />
+              <div className="flex items-center justify-center rounded-lg bg-transparent px-2 py-1 transition-colors duration-200 hover:bg-red-500">
+                <SignOutButton />
               </div>
-            )}
-            {isSignedIn && (
-              <div className="flex h-full w-full items-center justify-between gap-4">
-                <CreatePostWizard />
-                <div className="flex items-center justify-center rounded-lg bg-transparent px-2 py-1 transition-colors duration-200 hover:bg-red-500">
-                  <SignOutButton />
-                </div>
-              </div>
-            )}
-          </div>
-          <Feed />
-        </div>
-      </main>
+            </div>
+          )}
+        </PageHeader>
+        <Feed />
+      </PageLayout>
     </>
   );
 }
