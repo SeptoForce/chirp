@@ -1,16 +1,14 @@
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 
-import { type RouterOutputs, api } from "~/utils/api";
-
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import React from "react";
 import { toast } from "react-hot-toast";
-import Link from "next/link";
 import { PageHeader, PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+import { api } from "~/utils/api";
 
 dayjs.extend(relativeTime);
 
@@ -88,7 +86,12 @@ const Feed = () => {
 
   if (postLoading) return <LoadingPage />;
 
-  if (!data) return <div>Something went wrong!</div>;
+  if (!data)
+    return (
+      <div className="flex h-16 w-full items-center justify-center text-red-500">
+        <div>Posts could not be loaded. Try signing in.</div>
+      </div>
+    );
 
   return (
     <div className="flex flex-col">
@@ -109,22 +112,33 @@ export default function Home() {
   return (
     <>
       <PageLayout>
-        <PageHeader>
-          {!isSignedIn && (
-            <div className="flex w-full justify-center">
-              <SignInButton />
-            </div>
-          )}
-          {isSignedIn && (
+        {isSignedIn && (
+          <PageHeader>
             <div className="flex h-full w-full items-center justify-between gap-4 ">
               <CreatePostWizard />
               <div className="flex items-center justify-center rounded-lg bg-transparent px-2 py-1 transition-colors duration-200 hover:bg-red-500">
                 <SignOutButton />
               </div>
             </div>
-          )}
-        </PageHeader>
-        <Feed />
+          </PageHeader>
+        )}
+        {isSignedIn && <Feed />}
+        {!isSignedIn && (
+          <div className="flex h-5/6 w-full flex-col items-center justify-center gap-1">
+            <p className="text-xl font-black sm:text-3xl">Welcome to</p>
+            <p className="text-5xl font-black uppercase sm:text-6xl">
+              🐦 Twitmoji! 🐦
+            </p>
+            <p className="text-xs font-semibold uppercase opacity-25">
+              Like Twitter, but only emojis
+            </p>
+            <SignInButton>
+              <div className="mt-4 flex cursor-pointer items-center justify-center rounded-xl border border-slate-500 bg-white px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-transparent hover:text-white">
+                SIGN IN
+              </div>
+            </SignInButton>
+          </div>
+        )}
       </PageLayout>
     </>
   );

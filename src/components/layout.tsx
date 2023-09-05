@@ -5,7 +5,7 @@ type PageLayoutProps = {
 export const PageLayout = (props: PageLayoutProps) => {
   return (
     <main className="flex h-screen justify-center">
-      <div className="h-full w-full border-x border-slate-500 md:max-w-2xl">
+      <div className="h-screen min-h-fit w-full border-x border-slate-500 md:max-w-2xl">
         {props.children}
       </div>
     </main>

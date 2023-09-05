@@ -60,6 +60,8 @@ export const postsRouter = createTRPCRouter({
       ],
     });
 
+    console.log(posts);
+
     return addUserDataToPosts(posts);
   }),
 
