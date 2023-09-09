@@ -126,14 +126,15 @@ export default function Home() {
         {!isSignedIn && (
           <div className="flex h-5/6 w-full flex-col items-center justify-center gap-1">
             <p className="text-xl font-black sm:text-3xl">Welcome to</p>
-            <p className="text-5xl font-black uppercase sm:text-6xl">
-              🐦 Twitmoji! 🐦
-            </p>
+            <span className="flex text-5xl font-black uppercase sm:text-6xl">
+              <p className="text-blue-500">🐦 Twit</p>
+              <p className="text-yellow-400">moji! 😂</p>
+            </span>
             <p className="text-xs font-semibold uppercase opacity-25">
-              Like Twitter, but only emojis
+              Like Twitter, but only emoji
             </p>
             <SignInButton>
-              <div className="mt-4 flex cursor-pointer items-center justify-center rounded-xl border border-slate-500 bg-white px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-transparent hover:text-white">
+              <div className="mt-4 flex cursor-pointer items-center justify-center rounded-xl border border-slate-500 bg-white from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-gradient-to-br hover:text-white">
                 SIGN IN
               </div>
             </SignInButton>
