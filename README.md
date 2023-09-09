@@ -1,28 +1,30 @@
-# Create T3 App
+# 🐦 Twitmoji 😂 - Like twitter but only emojis
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![Twitmoji](docs/Hero.png)
 
-## What's next? How do I make an app with this?
+This is a web app that allows you to post emojis and see other people's emojis. It's like twitter but only emojis.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Demo
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Don't forget to post your emoji message!
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+[Open Twitmoji](https://twitmoji.septoforce.vercel.app)
 
-## Learn More
+## Features
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- Login with GitHub
+- Post emoji messages
+- See other people's emoji messages
+- Every user has a profile page
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Technologies used
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+This stack uses latest and popular technologies. It's a great stack for building web apps.
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- [Next.js](https://nextjs.org) - React framework
+- [Tailwind CSS](https://tailwindcss.com) - CSS framework
+- [tRPC](https://trpc.io) - Typescript RPC framework
+- [Prisma](https://prisma.io) - Database ORM
+- [Clerk](https://clerk.com) - Authentication
+- [Upstash](https://upstash.com) - Redis database
+- [Vercel](https://vercel.com) - Hosting

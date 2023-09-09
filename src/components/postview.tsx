@@ -13,8 +13,8 @@ export const PostView = (props: PostWithUser) => {
   const { post, author } = props;
 
   return (
-    <div key={post.id} className="border-b border-zinc-500 p-4">
-      <div className="flex h-full items-center gap-2">
+    <div key={post.id} className="p-4">
+      <div className="flex h-full items-center gap-2 pb-2 pr-2">
         <Image
           src={author.imageUrl}
           alt="Profile image"
@@ -22,7 +22,7 @@ export const PostView = (props: PostWithUser) => {
           width={48}
           height={48}
         />
-        <div className="gap-2">
+        <div className="w-full">
           <div className="flex flex-col font-bold text-white sm:flex-row sm:gap-1">
             <Link href={`/@${author.username}`}>
               <span>@{author.username}</span>
@@ -33,7 +33,11 @@ export const PostView = (props: PostWithUser) => {
               </div>
             </Link>
           </div>
-          <div className="text-3xl">{post.content}</div>
+          <Link href={`/post/${post.id}`}>
+            <div className="mt-2 flex w-full items-center rounded-xl bg-slate-900 px-3 py-2">
+              <div className="text-3xl">{post.content}</div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

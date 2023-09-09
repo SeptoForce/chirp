@@ -94,7 +94,7 @@ const Feed = () => {
     );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col divide-y divide-slate-900">
       {data.map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
@@ -134,7 +134,7 @@ export default function Home() {
               Like Twitter, but only emoji
             </p>
             <SignInButton>
-              <div className="mt-4 flex cursor-pointer items-center justify-center rounded-xl border border-slate-500 bg-white from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-gradient-to-br hover:text-white">
+              <div className="mt-4 flex cursor-pointer items-center justify-center rounded-xl border border-slate-500/30 bg-white from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2 font-bold text-black transition-colors duration-200 hover:bg-gradient-to-br hover:text-white">
                 SIGN IN
               </div>
             </SignInButton>
