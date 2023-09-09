@@ -1,8 +1,8 @@
 # 🐦 Twitmoji 😂 - Like twitter but only emojis
+This is a web app that allows you to post emojis and see other people's emojis. It's like twitter but only emojis.
 
 ![Twitmoji](docs/Hero.png)
 
-This is a web app that allows you to post emojis and see other people's emojis. It's like twitter but only emojis.
 
 ## Demo
 
